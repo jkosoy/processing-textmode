@@ -14,36 +14,38 @@ Processing doesn't support anonymous functions so there had to be a slight alter
 
 From any object, including your sketch's main file:
 
-  // this could be your draw method
-  void somewhere() {
-    textModeInstance.processBox(x,y,w,h,this,"functionToCall")
-  }
+    ```java
+    // this could be your draw method
+    void somewhere() {
+      textModeInstance.processBox(x,y,w,h,this,"functionToCall")
+    }
 
-  // must follow this format
-  int[] functionToCall(int charId,int colorId) {
-    int[] foo = { charId, colorId };
-    // do something to foo
-    return foo;
-  }
+    // must follow this format
+    int[] functionToCall(int charId,int colorId) {
+      int[] foo = { charId, colorId };
+      // do something to foo
+      return foo;
+    }
 
 You could also process a box in a class by implementing the TextModeCallback delegate.
 
-  class MyClass implements TextModeCallback {
+    ```java
+    class MyClass implements TextModeCallback {
 
-    void somewhere() {
-      myTextMode.processBox(x,y,w,h,"an arbitrary string!",this);
+      void somewhere() {
+        myTextMode.processBox(x,y,w,h,"an arbitrary string!",this);
+      }
+
+      int[] textModeProcessBoxHandler(String id,int charId,int colorId) {
+        int[] foo = { charId, colorId };
+
+        if(id == "an arbitrary string!") {
+          // do something to foo
+       }
+
+        return foo;
+      }
     }
-
-    int[] textModeProcessBoxHandler(String id,int charId,int colorId) {
-      int[] foo = { charId, colorId };
-
-      if(id == "an arbitrary string!") {
-        // do something to foo
-     }
-
-      return foo;
-    }
-  }
 
 ## Installation Instructions
 
