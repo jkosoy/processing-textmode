@@ -14,7 +14,6 @@ Processing doesn't support anonymous functions so there had to be a slight alter
 
 From any object, including your sketch's main file:
 
-    ```java
     // this could be your draw method
     void somewhere() {
       textModeInstance.processBox(x,y,w,h,this,"functionToCall")
@@ -29,7 +28,6 @@ From any object, including your sketch's main file:
 
 You could also process a box in a class by implementing the TextModeCallback delegate.
 
-    ```java
     class MyClass implements TextModeCallback {
 
       void somewhere() {
